@@ -1,2 +1,2 @@
-# vidtome-diffusion.github.io
-Project webpage of paper "VidToMe: Video Token Merging for Zero-Shot Video Editing".
+# TVML-diffusion.github.io
+Project webpage of paper "Teaching Video Diffusion Model with Latent Physical Phenomenon Knowledge".
