@@ -52,15 +52,18 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title">VidToMe: Video Token Merging for Zero-Shot Video
-                            Editing</h1>
-                        <div class="is-size-5 publication-authors">
-                            <span class="author-block">CVPR 2024</span>
+                        <h1 class="title is-1 publication-title">Teaching Video Diffusion Model with Latent Physical Phenomenon Knowledge</h1>
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block">Arxiv</span>
                         </div>
-                        <div class="is-size-5 publication-authors">
+                        <div class="is-size-6 publication-authors">
                             <!-- Paper authors -->
                             <span class="author-block">
-                                <a href="https://qinglongcao.xyz//" target="_blank">Qinglong Cao</a><sup>1</sup>,</span>
+                                <a href="https://qinglongcao.xyz//" target="_blank">Qinglong Cao</a><sup>1,2</sup>,</span>
+                            <span class="author-block">
+                               Ding Wang</a><sup>2</sup>,</span>
+                               <span class="author-block">
+                                <a href="https://www.eitech.edu.cn/?tid=62&p=teacher&lang=en" target="_blank">Yuntian Chen</a><sup>2</sup>,</span>
                             <span class="author-block">
                                 <a href="https://lixirui142.github.io/" target="_blank">Xirui Li</a><sup>1</sup>,</span>
                             <span class="author-block">
@@ -69,17 +72,13 @@
                                 <a href="https://english.seiee.sjtu.edu.cn/english/detail/842_802.htm"
                                     target="_blank">Xiaokang Yang</a><sup>1</sup>,
                             </span>
-                            <span class="author-block">
-                                <a href="https://faculty.ucmerced.edu/mhyang/" target="_blank">Ming-Hsuan
-                                    Yang</a><sup>2</sup>
-                            </span>
                         </div>
 
                         <div class="is-size-5 publication-authors">
                             <span class="author-block"><sup>1</sup><a href="https://www.sjtu.edu.cn/"
                                     target="_blank">Shanghai Jiao Tong University</a>,</span>
-                            <span class="author-block"><sup>2</sup><a href="https://www.ucmerced.edu/"
-                                    target="_blank">UC Merced</a></span>
+                            <span class="author-block"><sup>2</sup><a href="https://www.eitech.edu.cn/?lang=en"
+                                    target="_blank">Eastern Institute of Technology, Ningbo</a></span>
                         </div>
 
 
@@ -109,7 +108,7 @@
 
                                 <!-- Github link -->
                                 <span class="link-block">
-                                    <a href="https://github.com/lixirui142/VidToMe" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                    <a href="https://github.com/caoql98/TVML" target="_blank" class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="fab fa-github"></i>
                                         </span>
@@ -137,7 +136,7 @@
                                     </a>
                                 </span>
                                 <!-- Youtube summary video Link -->
-                                <span class="link-block">
+                                <!-- <span class="link-block">
                                     <a href="https://youtu.be/cZPtwcRepNY" target="_blank"
                                         class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
@@ -145,7 +144,7 @@
                                         </span>
                                         <span>Video</span>
                                     </a>
-                                </span>
+                                </span> -->
                             </div>
                         </div>
                     </div>
@@ -159,9 +158,9 @@
     <section class="hero teaser">
         <div class="container is-max-desktop">
             <div class="hero-body">
-                <video preload="auto" poster="" id="tree" autoplay controls muted loop width="600px" outline="0px">
+                <video preload="auto" poster="" id="tree" autoplay controls muted loop width="850px" outline="0px">
                     <!-- Your video -->
-                    <source src="videos/teaser.mp4" type="video/mp4">
+                    <source src="videos/all_results.mp4" type="video/mp4">
                     <!-- <source src="final_very_compressed.mp4" -->
 
                 </video>
@@ -180,21 +179,14 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Diffusion models have made significant advances in generating high-quality images, but their
-                            application to video generation has remained challenging due to the complexity of temporal
-                            motion. Zero-shot video editing offers a solution by utilizing pre-trained image diffusion
-                            models to translate source videos into new ones. Nevertheless, existing methods struggle to
-                            maintain strict temporal consistency and efficient memory consumption. In this work, we
-                            propose a novel approach to enhance temporal consistency in generated videos by merging
-                            self-attention tokens across frames. By aligning and compressing temporally redundant tokens
-                            across frames, our method improves temporal coherence and reduces memory consumption in
-                            self-attention computations. The merging strategy matches and aligns tokens according to the
-                            temporal correspondence between frames, facilitating natural temporal consistency in
-                            generated video frames. To manage the complexity of video processing, we divide videos into
-                            chunks and develop intra-chunk local token merging and inter-chunk global token merging,
-                            ensuring both short-term video continuity and long-term content consistency. Our video
-                            editing approach seamlessly extends the advancements in image editing to video editing,
-                            rendering favorable results in temporal consistency over state-of-the-art methods.
+                         Video diffusion models have exhibited tremendous progress in various video generation tasks. 
+                         However, existing models struggle to capture latent physical knowledge, failing to infer physical phenomena that are challenging to articulate with natural language. 
+                         Generating videos following the fundamental physical laws is still an opening challenge. To address this challenge, we propose a novel method to teach video diffusion models with latent physical phenomenon knowledge,
+                         enabling the accurate generation of physically informed phenomena. Specifically, we first pre-train Masked Autoencoders (MAE) to reconstruct the physical phenomena, 
+                         resulting in output embeddings that encapsulate latent physical phenomenon knowledge. Leveraging these embeddings, we could generate the pseudo-language prompt features based on the aligned spatial relationships between CLIP vision and language encoders. 
+                         Particularly, given that diffusion models typically use CLIP's language encoder for text prompt embeddings, our approach integrates the CLIP visual features informed by latent physical knowledge into a quaternion hidden space. 
+                         This enables the modeling of spatial relationships to produce physical knowledge-informed pseudo-language prompts. By incorporating these prompt features and fine-tuning the video diffusion model in a parameter-efficient manner, 
+                         the physical knowledge-informed videos are successfully generated. We validate our method extensively through both numerical simulations and real-world observations of physical phenomena, demonstrating its remarkable performance across diverse scenarios.
                         </p>
                     </div>
                 </div>
@@ -215,26 +207,17 @@
 
 
                             <div>
-                                <td colspan="3"><img src="pics/pipeline.png" alt="" width="1000" /></td>
+                                <td colspan="3"><img src="pics/main1.png" alt="" width="1000" /></td>
                             </div>
                             <div class="content has-text-justified">
                                 <p>
-                                    Given an input source video and a text prompt, our proposed VidToMe generates an
-                                    edited video according to the prompt using a pretrained text-to-image diffusion
-                                    model. The critical idea is to merge similar tokens across multiple frames in
-                                    self-attention modules to achieve temporal consistency in generated videos.
+                                Our goal is to equip the video diffusion model with latent physical phenomenon knowledge, enabling it to generate physically plausible phenomena from an initial frame
                                 </p>
                                 <p>
-                                    <b>Top: VidToMe pipeline.</b> Starting from DDIM inverted noise latent, we denoise
-                                    the video frames with the diffusion model combined with an existing controlling
-                                    method. The video token merging is applied before self-attention blocks.
-                                </p>
-                                <p>
-                                    <b>Bottom: Video Token Merging.</b> Given the self-attention input tokens, we first
-                                    merge tokens in the video chunk (Local Token Merging). Then, a global token set is
-                                    combined to enable inter-chunk token sharing (Global Token Merging). After joint
-                                    self-attention on the merged token set, the output tokens are restored to their
-                                    original size by reversing the merging process.
+                                    Overview of our proposed method. Aiming to teach stable video diffusion model with latent physical phenomenon knowledge. 
+                                    We firstly leverage MAE to reconstruct masked physical phenomena. 
+                                    Then, the CLIP vision features of initial frame are propagated into quaternion hidden space for pseudo-language embeddings enriched with latent physical phenomenon knowledge. 
+                                    By incorporating these embeddings and using parameter-efficient fine-tuning to make the model generate physically consistent phenomena. 
                                 </p>
                             </div>
                         </div>
@@ -244,13 +227,20 @@
 
     <!--End paper poster -->
 
+
+
+
+
+
+
+
     <!-- Video grid -->
     <section class="hero is-light">
         <div class="hero-body">
             <div class="container is-max-desktop">
                 <div class="columns is-centered has-text-centered">
                     <div class="column">
-                        <h2 class="title is-3">VidToMe Editing Results</h2>
+                        <h2 class="title is-3">Video Generation Results</h2>
                         <div class="content has-text-justified" align="center">
                             <!-- <td colspan="3">
                                 <p style="margin-top: -12px;">
@@ -334,7 +324,7 @@
                             <br /> -->
                             <td colspan="3">
                                 <p style="margin-top: -12px;text-align: center;">
-                                    Left: Input Video; Right: Edit Video.
+                                    <!-- Left: Input Video; Right: Edit Video. -->
                                 </p>
                             </td>
                             <!-- <div class="result-item">
@@ -351,36 +341,285 @@
                                 <div style="text-align: center;">To <text class="prompt">"Ice Sculpture"</text>
                                 </div>
                             </div> -->
-                            <div class="result-item">
-                                <div class="video-wrapper">
-                                    <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
-                                        <source src="videos/results/dog/source.mp4" type="video/mp4">
-                                    </video>
-                                </div>
-                                <div class="video-wrapper">
-                                    </caption>
-                                    <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
-                                        <source src="videos/results/dog/pnp.mp4" type="video/mp4">
-                                    </video>
-                                </div>
 
-                                <div style="text-align: center;">To <text class="prompt">"Van Gogh Style"</text>
+                            <!-- <div class="result-item">
+                                <div class="video-wrapper">
+                                    <video preload="auto" poster="" autoplay controls muted loop width="150px">
+                                        <source src="videos/results/cylinder/GT.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="video-wrapper">
+                                    <video preload="auto" poster="" autoplay controls muted loop width="150px">
+                                        <source src="videos/results/cylinder/LoRA.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="video-wrapper">
+                                    <video preload="auto" poster="" autoplay controls muted loop width="150px">
+                                        <source src="videos/results/cylinder/Stable_Video_Diffusion.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="video-wrapper">
+                                    <video preload="auto" poster="" autoplay controls muted loop width="150px">
+                                        <source src="videos/results/cylinder/TAV.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="video-wrapper">
+                                    <video preload="auto" poster="" autoplay controls muted loop width="150px">
+                                        <source src="videos/results/dog/ours.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div style="text-align: center;">
+                                    <text class="prompt">"cylinder fluid simulation"</text>
+                                </div>
+                            </div> -->
+
+                            <!-- <div class="result-item" style="display: flex; justify-content: space-evenly; align-items: center; gap: 10px; width: 100%; max-width: 1200px; margin: auto; padding: 10px;">
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <img src="videos/results/cylinder/GT.gif" alt="Ground Truth" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <img src="videos/results/cylinder/LoRA.gif" alt="LoRA" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <img src="videos/results/cylinder/Stable_Video_Diffusion.gif" alt="Stable Video Diffusion" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <img src="videos/results/cylinder/TAV.gif" alt="TAV" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <img src="videos/results/cylinder/Ours.gif" alt="Ours" style="width: 100%; height: auto;">
                                 </div>
                             </div>
+                            <div style="text-align: center; margin-top: 10px;">
+                                <text class="prompt">"cylinder fluid simulation"</text>
+                            </div> -->
 
-                            <div class="result-item">
-                                <!-- Add caption element for each video preload="auto"-->
+
+                            <div class="result-item" style="display: flex; justify-content: space-evenly; align-items: center; gap: 10px; width: 100%; max-width: 1200px; margin: auto; padding: 10px;">
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ground Truth</p>
+                                    <img src="videos/physical/fluid/Bernard/GT.gif" alt="Ground Truth" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">LoRA+SVD</p>
+                                    <img src="videos/physical/fluid/Bernard/LoRA.gif" alt="LoRA+SVD" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Stable Video Diffusion(SVD)</p>
+                                    <img src="videos/physical/fluid/Bernard/Stable_Video_Diffusion.gif" alt="Stable Video Diffusion(SVD)" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Tune-a-video</p>
+                                    <img src="videos/physical/fluid/Bernard/TAV.gif" alt="Tune-a-video" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ours</p>
+                                    <img src="videos/physical/fluid/Bernard/Ours.gif" alt="Ours" style="width: 100%; height: auto;">
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-top: -10px;">
+                                <text class="prompt">"Bernard fluid simulation"</text>
+                            </div>
+
+
+                            
+                            <div class="result-item" style="display: flex; justify-content: space-evenly; align-items: center; gap: 10px; width: 100%; max-width: 1200px; margin: auto; padding: 10px;">
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ground Truth</p>
+                                    <img src="videos/physical/fluid/cylinder/GT.gif" alt="Ground Truth" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">LoRA+SVD</p>
+                                    <img src="videos/physical/fluid/cylinder/LoRA.gif" alt="LoRA+SVD" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Stable Video Diffusion(SVD)</p>
+                                    <img src="videos/physical/fluid/cylinder/Stable_Video_Diffusion.gif" alt="Stable Video Diffusion(SVD)" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Tune-a-video</p>
+                                    <img src="videos/physical/fluid/cylinder/TAV.gif" alt="Tune-a-video" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ours</p>
+                                    <img src="videos/physical/fluid/cylinder/Ours.gif" alt="Ours" style="width: 100%; height: auto;">
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-top: -10px;">
+                                <text class="prompt">"CYlinder Fluid Simulation"</text>
+                            </div>
+                            
+
+                            <div class="result-item" style="display: flex; justify-content: space-evenly; align-items: center; gap: 10px; width: 100%; max-width: 1200px; margin: auto; padding: 10px;">
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ground Truth</p>
+                                    <img src="videos/physical/fluid/damBreak/GT.gif" alt="Ground Truth" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">LoRA+SVD</p>
+                                    <img src="videos/physical/fluid/damBreak/LoRA.gif" alt="LoRA+SVD" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Stable Video Diffusion(SVD)</p>
+                                    <img src="videos/physical/fluid/damBreak/Stable_Video_Diffusion.gif" alt="Stable Video Diffusion(SVD)" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Tune-a-video</p>
+                                    <img src="videos/physical/fluid/damBreak/TAV.gif" alt="Tune-a-video" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ours</p>
+                                    <img src="videos/physical/fluid/damBreak/Ours.gif" alt="Ours" style="width: 100%; height: auto;">
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-top: -10px;">
+                                <text class="prompt">"DamBreak Fluid Simulation"</text>
+                            </div>
+
+
+                            
+                            <div class="result-item" style="display: flex; justify-content: space-evenly; align-items: center; gap: 10px; width: 100%; max-width: 1200px; margin: auto; padding: 10px;">
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ground Truth</p>
+                                    <img src="videos/physical/fluid/depthCharge/GT.gif" alt="Ground Truth" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">LoRA+SVD</p>
+                                    <img src="videos/physical/fluid/depthCharge/LoRA.gif" alt="LoRA+SVD" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Stable Video Diffusion(SVD)</p>
+                                    <img src="videos/physical/fluid/depthCharge/Stable_Video_Diffusion.gif" alt="Stable Video Diffusion(SVD)" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Tune-a-video</p>
+                                    <img src="videos/physical/fluid/depthCharge/TAV.gif" alt="Tune-a-video" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ours</p>
+                                    <img src="videos/physical/fluid/depthCharge/Ours.gif" alt="Ours" style="width: 100%; height: auto;">
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-top: -10px;">
+                                <text class="prompt">"DepthCharge Fluid Simulation"</text>
+                            </div>
+
+
+                            <div class="result-item" style="display: flex; justify-content: space-evenly; align-items: center; gap: 10px; width: 100%; max-width: 1200px; margin: auto; padding: 10px;">
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ground Truth</p>
+                                    <img src="videos/physical/typhoon/typhoon_202001/GT.gif" alt="Ground Truth" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">LoRA+SVD</p>
+                                    <img src="videos/physical/typhoon/typhoon_202001/LORA.gif" alt="LoRA+SVD" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Stable Video Diffusion(SVD)</p>
+                                    <img src="videos/physical/typhoon/typhoon_202001/Stable_Video_Diffusion.gif" alt="Stable Video Diffusion(SVD)" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Tune-a-video</p>
+                                    <img src="videos/physical/typhoon/typhoon_202001/TAV.gif" alt="Tune-a-video" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ours</p>
+                                    <img src="videos/physical/typhoon/typhoon_202001/Ours.gif" alt="Ours" style="width: 100%; height: auto;">
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-top: -10px;">
+                                <text class="prompt">"Typhoon_202001"</text>
+                            </div>
+
+                            <div class="result-item" style="display: flex; justify-content: space-evenly; align-items: center; gap: 10px; width: 100%; max-width: 1200px; margin: auto; padding: 10px;">
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ground Truth</p>
+                                    <img src="videos/physical/typhoon/typhoon_202009/GT.gif" alt="Ground Truth" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">LoRA+SVD</p>
+                                    <img src="videos/physical/typhoon/typhoon_202009/LORA.gif" alt="LoRA+SVD" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Stable Video Diffusion(SVD)</p>
+                                    <img src="videos/physical/typhoon/typhoon_202009/Stable_Video_Diffusion.gif" alt="Stable Video Diffusion(SVD)" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Tune-a-video</p>
+                                    <img src="videos/physical/typhoon/typhoon_202009/TAV.gif" alt="Tune-a-video" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ours</p>
+                                    <img src="videos/physical/typhoon/typhoon_202009/Ours.gif" alt="Ours" style="width: 100%; height: auto;">
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-top: -10px;">
+                                <text class="prompt">"Typhoon_202009"</text>
+                            </div>
+
+
+                            <div class="result-item" style="display: flex; justify-content: space-evenly; align-items: center; gap: 10px; width: 100%; max-width: 1200px; margin: auto; padding: 10px;">
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ground Truth</p>
+                                    <img src="videos/physical/typhoon/typhoon_202102/GT.gif" alt="Ground Truth" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">LoRA+SVD</p>
+                                    <img src="videos/physical/typhoon/typhoon_202102/LORA.gif" alt="LoRA+SVD" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Stable Video Diffusion(SVD)</p>
+                                    <img src="videos/physical/typhoon/typhoon_202102/Stable_Video_Diffusion.gif" alt="Stable Video Diffusion(SVD)" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Tune-a-video</p>
+                                    <img src="videos/physical/typhoon/typhoon_202102/TAV.gif" alt="Tune-a-video" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ours</p>
+                                    <img src="videos/physical/typhoon/typhoon_202102/Ours.gif" alt="Ours" style="width: 100%; height: auto;">
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-top: -10px;">
+                                <text class="prompt">"Typhoon_202102"</text>
+                            </div>
+                            
+                            
+                            <div class="result-item" style="display: flex; justify-content: space-evenly; align-items: center; gap: 10px; width: 100%; max-width: 1200px; margin: auto; padding: 10px;">
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ground Truth</p>
+                                    <img src="videos/physical/typhoon/typhoon_202204/GT.gif" alt="Ground Truth" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">LoRA+SVD</p>
+                                    <img src="videos/physical/typhoon/typhoon_202204/LORA.gif" alt="LoRA+SVD" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Stable Video Diffusion(SVD)</p>
+                                    <img src="videos/physical/typhoon/typhoon_202204/Stable_Video_Diffusion.gif" alt="Stable Video Diffusion(SVD)" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Tune-a-video</p>
+                                    <img src="videos/physical/typhoon/typhoon_202204/TAV.gif" alt="Tune-a-video" style="width: 100%; height: auto;">
+                                </div>
+                                <div class="image-wrapper" style="flex: 1; text-align: center; max-width: 220px;">
+                                    <p style="font-size: 14px; margin-bottom: 5px; text-align: center;">Ours</p>
+                                    <img src="videos/physical/typhoon/typhoon_202204/Ours.gif" alt="Ours" style="width: 100%; height: auto;">
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-top: -10px;">
+                                <text class="prompt">"Typhoon_202204"</text>
+                            </div>
+                            
+
+                            <!-- <div class="result-item">
                                 <div class="video-wrapper">
                                     <video preload="auto" poster="" autoplay controls muted loop width="150px">
-                                        <!-- Your video preload="auto"file here -->
-                                        <source src="videos/results/flamingo/source.mp4" type="video/mp4">
+                                        <source src="videos/results/cylinder/GT.mp4" type="video/mp4">
                                     </video>
                                 </div>
                                 <div class="video-wrapper">
                                     <video preload="auto" poster="" autoplay controls muted loop width="150px">
-                                        <!-- Your video preload="auto"file here -->
                                         <source src="videos/results/flamingo/sd2depth.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -388,17 +627,16 @@
                                         Flamingo"</text>
                                 </div>
                             </div>
+
                             <div class="result-item">
                                 <div class="video-wrapper">
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
                                         <source src="videos/results/swans/source.mp4" type="video/mp4">
                                     </video>
                                 </div>
                                 <div class="video-wrapper">
                                     </caption>
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
                                         <source src="videos/results/swans/pnp-oilpainting.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -407,16 +645,13 @@
                                 </div>
                             </div>
                             <div class="result-item">
-                                <!-- Add caption element for each video preload="auto"-->
                                 <div class="video-wrapper">
                                     <video preload="auto" poster="" autoplay controls muted loop width="150px">
-                                        <!-- Your video preload="auto"file here -->
                                         <source src="videos/results/bus/source.mp4" type="video/mp4">
                                     </video>
                                 </div>
                                 <div class="video-wrapper">
                                     <video preload="auto" poster="" autoplay controls muted loop width="150px">
-                                        <!-- Your video preload="auto"file here -->
                                         <source src="videos/results/bus/pnp-gpu.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -426,14 +661,12 @@
                             <div class="result-item">
                                 <div class="video-wrapper">
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
                                         <source src="videos/results/car-roundabout/source.mp4" type="video/mp4">
                                     </video>
                                 </div>
                                 <div class="video-wrapper">
                                     </caption>
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
                                         <source src="videos/results/car-roundabout/pnp.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -444,16 +677,13 @@
                             </div>
 
                             <div class="result-item">
-                                <!-- Add caption element for each video preload="auto"-->
                                 <div class="video-wrapper">
                                     <video preload="auto" poster="" autoplay controls muted loop width="150px">
-                                        <!-- Your video preload="auto"file here -->
                                         <source src="videos/results/walking/source.mp4" type="video/mp4">
                                     </video>
                                 </div>
                                 <div class="video-wrapper">
                                     <video preload="auto" poster="" autoplay controls muted loop width="150px">
-                                        <!-- Your video preload="auto"file here -->
                                         <source src="videos/results/walking/greeksculpture-pnp.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -464,14 +694,12 @@
                             <div class="result-item">
                                 <div class="video-wrapper">
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
                                         <source src="videos/results/breakdance/source.mp4" type="video/mp4">
                                     </video>
                                 </div>
                                 <div class="video-wrapper">
                                     </caption>
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
                                         <source src="videos/results/breakdance/pnp-popart.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -482,21 +710,20 @@
                             <div class="result-item" style="float: right;">
                                 <div class="video-wrapper">
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
                                         <source src="videos/results/hike/source.mp4" type="video/mp4">
                                     </video>
                                 </div>
                                 <div class="video-wrapper">
                                     </caption>
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
                                         <source src="videos/results/hike/volcano_depth.mp4" type="video/mp4">
                                     </video>
                                 </div>
 
                                 <div style="text-align: center;">To <text class="prompt">"Volcano, Spewing Lava"</text>
                                 </div>
-                            </div>
+                            </div> -->
+
                         </div>
                     </div>
                 </div>
@@ -508,7 +735,7 @@
 
     <!-- End video preload="auto"grid -->
 
-    <section class="hero is-small is-light">
+    <!-- <section class="hero is-small is-light">
         <div class="hero-body">
             <div class="container is-max-desktop">
                 <div class="columns is-centered has-text-centered">
@@ -517,12 +744,12 @@
 
                         <div id="results-carousel" class="carousel results-carousel" align="center">
                             <div class="item item-video1">
-                                <!-- Add caption element for each video preload="auto"-->
+             
                                 <div class="video-wrapper" style="width: 150px;">
                                     <caption>Input video</caption>
                                     <video preload="auto" poster="" id="video11" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/gold-fish/source.mp4" type="video/mp4">
                                     </video>
 
@@ -531,7 +758,7 @@
                                     <caption>Ours+PnP <a href="#ref-pnp">[1]</a></caption>
                                     <video preload="auto" poster="" id="video12" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+ 
                                         <source src="videos/compare/gold-fish/shark/pnp.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -539,7 +766,7 @@
                                     <caption>Ours+SD2-Depth <a href="#ref-sd">[2]</a></caption>
                                     <video preload="auto" poster="" id="video13" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/gold-fish/shark/sd2depth.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -547,7 +774,7 @@
                                     <caption>Text2Video-Zero <a href="#ref-t2v">[3]</a></caption>
                                     <video preload="auto" poster="" id="video14" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/gold-fish/shark/t2v.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -555,7 +782,7 @@
                                     <caption>Tune-a-video <a href="#ref-tav">[4]</a></caption>
                                     <video preload="auto" poster="" id="video15" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/gold-fish/shark/tav.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -563,7 +790,7 @@
                                     <caption>vid2vid-zero <a href="#ref-v2v">[5]</a></caption>
                                     <video preload="auto" poster="" id="video16" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/gold-fish/shark/v2v.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -571,7 +798,7 @@
                                     <caption>Pix2Video <a href="#ref-p2v">[6]</a></caption>
                                     <video preload="auto" poster="" id="video25" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/gold-fish/shark/p2v.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -585,7 +812,7 @@
                                     <caption>Input video</caption>
                                     <video preload="auto" poster="" id="video21" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/drift-turn/source.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -593,7 +820,7 @@
                                     <caption>Ours+PnP <a href="#ref-pnp">[1]</a></caption>
                                     <video preload="auto" poster="" id="video22" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+              
                                         <source src="videos/compare/drift-turn/snowy/pnp.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -601,7 +828,7 @@
                                     <caption>Ours+SD2-Depth <a href="#ref-sd">[2]</a></caption>
                                     <video preload="auto" poster="" id="video23" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/drift-turn/snowy/sd2depth.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -609,7 +836,7 @@
                                     <caption>Text2Video-Zero <a href="#ref-t2v">[3]</a></caption>
                                     <video preload="auto" poster="" id="video24" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/drift-turn/snowy/t2v.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -617,7 +844,7 @@
                                     <caption>Tune-a-video <a href="#ref-tav">[4]</a></caption>
                                     <video preload="auto" poster="" id="video25" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/drift-turn/snowy/tav.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -625,7 +852,7 @@
                                     <caption>vid2vid-zero <a href="#ref-v2v">[5]</a></caption>
                                     <video preload="auto" poster="" id="video26" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/drift-turn/snowy/v2v.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -633,7 +860,7 @@
                                     <caption>Pix2Video <a href="#ref-p2v">[6]</a></caption>
                                     <video preload="auto" poster="" id="video27" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/drift-turn/snowy/p2v.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -645,7 +872,7 @@
                                     <caption>Input video</caption>
                                     <video preload="auto" poster="" id="video31" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/breakdance/source.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -653,7 +880,7 @@
                                     <caption>Ours+PnP <a href="#ref-pnp">[1]</a></caption>
                                     <video preload="auto" poster="" id="video32" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/breakdance/colosseum/pnp.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -661,7 +888,7 @@
                                     <caption>Ours+SD2-Depth <a href="#ref-sd">[2]</a></caption>
                                     <video preload="auto" poster="" id="video33" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/breakdance/colosseum/sd2depth.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -669,7 +896,7 @@
                                     <caption>Text2Video-Zero <a href="#ref-t2v">[3]</a></caption>
                                     <video preload="auto" poster="" id="video34" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/breakdance/colosseum/t2v.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -677,7 +904,7 @@
                                     <caption>Tune-a-video <a href="#ref-tav">[4]</a></caption>
                                     <video preload="auto" poster="" id="video35" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/breakdance/colosseum/tav.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -685,7 +912,7 @@
                                     <caption>vid2vid-zero <a href="#ref-v2v">[5]</a></caption>
                                     <video preload="auto" poster="" id="video36" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/breakdance/colosseum/v2v.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -693,7 +920,7 @@
                                     <caption>Pix2Video <a href="#ref-p2v">[6]</a></caption>
                                     <video preload="auto" poster="" id="video37" autoplay controls muted loop
                                         width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/compare/breakdance/colosseum/p2v.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -701,7 +928,7 @@
                                 </div>
                             </div>
 
-                        </div>
+                        </div> -->
 
                         <!-- <div class="content has-text-justified">
             <div class="caption-container">
@@ -742,16 +969,14 @@
                         <h2 class="title is-3">Efficiency</h2>
                         <div class="content has-text-justified">
 
-
-
                             <div align="center">
-                                <td colspan="3"><img src="pics/efficiency.png" alt="" width="600" /></td>
+                                <td colspan="3"><img src="comparisons.png" alt="" width="800" /></td>
                             </div>
                             <div class="content has-text-justified">
                                 <p>
-                                    Merging multi-frame tokens reduces the temporal redundancy in video frames,
-                                    improving memory and computational efficiency. Therefore, compared with baseline
-                                    methods, VidToMe consumes less memory while generating videos quickly.
+                                    Quantitative evaluation results on fluid simulation dataset (Left Side) and true typhoon dataset (Right Side). SVD: Stable Video Diffusion.
+                                    LoRA*: SVD+LoRA. TAV: Tune-A-video. SimDA: Simple Diffusion Adapter.
+                                    To evaluate the generated physical phenomena, we consider eight essential metrics: RMSE, SSIM, Stream Function Error (SFE), Smoothness Error (SE), Gradient Smoothness (GS), Continuity Score (CS), Q-Criterion Error (QCE), and Vorticity Error (VE).
                                 </p>
                             </div>
                         </div>
@@ -759,7 +984,7 @@
     </section>
     <!-- End video preload="auto"carousel -->
 
-    <section class="hero is-small is-light">
+    <!-- <section class="hero is-small is-light">
         <div class="hero-body">
             <div class="container is-max-desktop">
                 <div class="columns is-centered has-text-centered">
@@ -768,18 +993,18 @@
 
                         <div id="results-carousel" class="carousel results-carousel" align="center">
                             <div class="item item-video1">
-                                <!-- Add caption element for each video preload="auto"-->
+          
                                 <div class="video-wrapper" style="width: 300px;">
                                     <caption>Input Video</caption>
                                     <video preload="auto" poster="" autoplay controls muted loop width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/controls/ski-follow/source.mp4" type="video/mp4">
                                     </video>
                                 </div>
                                 <div class="video-wrapper" style="width: 300px;">
                                     <caption>Ours+PnP <a href="#ref-pnp">[1]</a></caption>
                                     <video preload="auto" poster="" autoplay controls muted loop width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/controls/ski-follow/polar-bear-pnp.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -787,25 +1012,25 @@
                                 </div>
                             </div>
                             <div class="item item-video2">
-                                <!-- Add caption element for each video preload="auto"-->
+
                                 <div class="video-wrapper" style="width: 300px;">
                                     <caption>Input Video</caption>
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/controls/tea-pour/source.mp4" type="video/mp4">
                                     </video>
                                 </div>
                                 <div class="video-wrapper" style="width: 300px;">
                                     <caption>Depth</caption>
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/controls/tea-pour/depth.mp4" type="video/mp4">
                                     </video>
                                 </div>
                                 <div class="video-wrapper" style="width: 300px;">
                                     <caption>Ours+ControlNet-Depth <a href="#ref-controlnet">[7]</a></caption>
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/controls/tea-pour/depth-vector.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -814,25 +1039,25 @@
                             </div>
 
                             <div class="item item-video2">
-                                <!-- Add caption element for each video preload="auto"-->
+
                                 <div class="video-wrapper" style="width: 300px;">
                                     <caption>Input Video</caption>
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/controls/tennis/source.mp4" type="video/mp4">
                                     </video>
                                 </div>
                                 <div class="video-wrapper" style="width: 300px;">
                                     <caption>Softedge</caption>
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/controls/tennis/softedge.mp4" type="video/mp4">
                                     </video>
                                 </div>
                                 <div class="video-wrapper" style="width: 300px;">
                                     <caption>Ours+ControlNet-Softedge <a href="#ref-controlnet">[7]</a></caption>
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/controls/tennis/softedge-spiderman.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -841,18 +1066,18 @@
                             </div>
 
                             <div class="item item-video2">
-                                <!-- Add caption element for each video preload="auto"-->
+
                                 <div class="video-wrapper" style="width: 300px;">
                                     <caption>Input Video</caption>
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/controls/train/source.mp4" type="video/mp4">
                                     </video>
                                 </div>
                                 <div class="video-wrapper" style="width: 300px;">
                                     <caption>Ours+ControlNet-Tile <a href="#ref-controlnet">[7]</a></caption>
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/controls/train/tile.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -861,7 +1086,7 @@
                             </div>
 
 
-                        </div>
+                        </div> -->
 
                         <!-- <div class="content has-text-justified">
             <div class="caption-container">
@@ -890,7 +1115,7 @@
               
             </div>
       </div> -->
-                    </div>
+                    <!-- </div>
                 </div>
     </section>
     <section class="hero is-small is-light">
@@ -902,18 +1127,18 @@
 
                         <div id="results-carousel" class="carousel results-carousel" align="center">
                             <div class="item item-video1">
-                                <!-- Add caption element for each video preload="auto"-->
+ 
                                 <div class="video-wrapper" style="width: 300px;">
                                     <caption>Input Video</caption>
                                     <video preload="auto" poster="" autoplay controls muted loop width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/customized/breakdance/source.mp4" type="video/mp4">
                                     </video>
                                 </div>
                                 <div class="video-wrapper" style="width: 300px;">
                                     <caption>Pixel Art LoRA<sup>1</sup> <a href="#ref-lora">[8]</a></caption>
                                     <video preload="auto" poster="" autoplay controls muted loop width="150px">
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/customized/breakdance/softedge-pixelart-lora.mp4"
                                             type="video/mp4">
                                     </video>
@@ -923,11 +1148,11 @@
                             </div>
 
                             <div class="item item-video2">
-                                <!-- Add caption element for each video preload="auto"-->
+
                                 <div class="video-wrapper" style="width: 300px;">
                                     <caption>Input Video</caption>
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/customized/man-surround/source.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -935,7 +1160,7 @@
                                     <caption>Finetuned Model (Anything<sup>2</sup>)
                                     </caption>
                                     <video preload="auto" poster="" autoplay controls muted loop>
-                                        <!-- Your video preload="auto"file here -->
+
                                         <source src="videos/customized/man-surround/tile.mp4" type="video/mp4">
                                     </video>
                                 </div>
@@ -963,7 +1188,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- <div class="content has-text-justified">
             <div class="caption-container">
@@ -992,13 +1217,13 @@
               
             </div>
       </div> -->
-                    </div>
+                    <!-- </div>
                 </div>
-    </section>
+    </section> -->
 
 
 
-    <section class="hero is-small">
+    <!-- <section class="hero is-small">
         <div class="hero-body">
             <div class="container is-max-desktop">
                 <div class="columns is-centered has-text-centered">
@@ -1008,35 +1233,36 @@
                             <div class="column is-four-fifths">
 
                                 <div class="publication-video">
-                                    <!-- Youtube embed code here -->
+
                                     <iframe src="https://www.youtube.com/embed/cZPtwcRepNY" frameborder="0"
                                         allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
                     </div>
-    </section>
+    </section> -->
 
     <!--BibTex citation -->
     <section class="section" id="BibTeX">
         <div class="container is-max-desktop content">
             <h2 class="title">BibTeX</h2>
-            <pre><code>@article{li2023vidtome,
+            <pre><code>
+    @article{li2023vidtome,
     title={VidToMe: Video Token Merging for Zero-Shot Video Editing},
     author={Li, Xirui and Ma, Chao and Yang, Xiaokang and Yang, Ming-Hsuan},
     booktitle={arXiv preprint arxiv:2312.10656},
     year={2023}
-    }</code></pre>
+    }
+</code></pre>
         </div>
     </section>
     <!--End BibTex citation -->
 
     <section class="hero is-small">
         <div class="hero-body">
-            <div class="container is-max-desktop">
+            <!-- <div class="container is-max-desktop">
                 <div class="columns is-centered has-text-centered">
                     <div class="column custom-width">
-                        <!-- <h2 class="title is-3"></h2> -->
                         <div class="content has-text-justified">
                             <p>
                                 <a name="ref-pnp" id="ref-pnp"></a>
@@ -1074,7 +1300,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
+
             <footer class="footer">
                 <div class="container">
                     <div class="columns is-centered">
